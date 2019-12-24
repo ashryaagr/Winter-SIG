@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{message}} 
+
+<br><br>
+<form action="RegisterAsVoter" method="post">
+    {% csrf_token %}
+    Enter Username : <br> <input type="text" name="username">
+    <br>
+    Enter Candidate Name : <br> <input type="text" name="VoterName">
+    <br>
+    Enter Candidate Constituency : <br> <input type="text" name="constituency">
+    <br>
+    Enter Password : <br> <input type="password" name="password1">
+    <br>
+    Re-enter Password : <br> <input type="password" name="password2">
+    <br>
+    <input type="submit">
+</form>
+{% endblock %}

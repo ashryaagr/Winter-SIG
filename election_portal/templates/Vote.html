@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% static "images" as baseUrl %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+{{message}}
+<br>
+<form action="VoteCasted" method="POST">
+    {% csrf_token %}
+
+    {% for candidate in candidates_list %}
+        <input type="radio" name="VotedFor" value="{{candidate.username}}">{{candidate.CandidateName}}<br>{{candidate.party}}<br><img src="{{candidate.symbol.url}}" alt="{{candidate.party}}" height="100" width="100"><br>
+        <br>
+    {% endfor %}
+    <button name="Voter_username" value="{{username}}" type="submit">Submit</button>
+</form>
+
+<br><a href="Logout">Logout</a>
+
+{% else %}
+
+You are not Logged in
+
+{% endif %}
+
+{% endblock %}

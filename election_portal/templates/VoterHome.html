@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+{{message}}
+<br>
+Voter Details:
+<br>Name : {{userdata.VoterName}}
+<br>Constituency : {{userdata.constituency}}
+<br>Voted For : {{userdata.VotedFor}} 
+<form action="CallVotePage" method="GET">
+    <br><button type="submit" name="username" value="{{userdata.username}}">Vote</button>
+</form>
+<br><a href="Logout">Logout</a>
+
+{% else %}
+
+You are not Logged in
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{message}} 
+
+<br><br>
+<form action="RegisterAsCandidate" method="post" accept="image/jpeg" enctype="multipart/form-data">
+    {% csrf_token %}
+    Enter Username : <br> <input type="text" name="username">
+    <br>
+    Enter Candidate Name : <br> <input type="text" name="CandidateName">
+    <br>
+    Enter Candidate Party : <br> <input type="text" name="party">
+    <br>
+    Enter Candidate Constituency : <br> <input type="text" name="constituency">
+    <br>
+    Enter Candidate Symbol : <br> <input type="file" name="symbol">
+    <br>
+    Enter Password : <br> <input type="password" name="password1">
+    <br>
+    Re-enter Password : <br> <input type="password" name="password2">
+    <br>
+    <input type="submit">
+</form>
+{% endblock %}

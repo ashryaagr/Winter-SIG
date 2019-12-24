@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% static "images" as baseUrl %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+{{message}}
+<br>
+Candidate Details:
+<br>Name : {{userdata.CandidateName}}
+<br>Constituency : {{userdata.constituency}}
+<br>Party : {{userdata.party}}
+<br>Symbol : <img src="{{userdata.symbol.url}}" alt="{{userdata.party}}" height="100" width="100">
+<br>Voted For : {{userdata.VotedFor}}
+<br>Votes Recieved : {{userdata.NumberOfVotes}} 
+<form action="CallVotePage" method="GET">
+    <br><button type="submit" name="username" value="{{userdata.username}}">Vote</button>
+</form>
+<br><a href="Logout">Logout</a>
+
+{% else %}
+
+You are not Logged in
+
+{% endif %}
+
+{% endblock %}
